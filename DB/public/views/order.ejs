@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Food</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <h1>Order Your Food</h1>
+
+  <form action="/order/place-order" method="POST">
+    <label for="food">Choose a food item:</label>
+    <select name="food_id" id="food">
+      <option value="1">Cheese Burger</option>
+      <option value="2">Chicken Sandwich</option>
+      <!-- Add more options dynamically -->
+    </select>
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" name="quantity" min="1" value="1">
+
+    <button type="submit">Place Order</button>
+  </form>
+
+  <%- include('partials/footer') %>
+</body>
+</html>
+
+
+
+
+
+
+<h2>Payment</h2>
+
+<form id="payment-form">
+  <div id="card-element"></div>
+  <button type="submit">Pay</button>
+</form>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+  const stripe = Stripe('your-publishable-key');
+  const elements = stripe.elements();
+  const card = elements.create('card');
+  card.mount('#card-element');
+
+  const form = document.getElementById('payment-form');
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const { clientSecret } = await fetch('/order/create-payment-intent', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ amount: totalAmount }), // Total amount from the order
+    }).then((res) => res.json());
+
+    const { paymentIntent, error } = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: card,
+        billing_details: {
+          name: 'Customer Name',
+        },
+      },
+    });
+
+    if (error) {
+      console.error('Payment failed:', error);
+    } else if (paymentIntent.status === 'succeeded') {
+      console.log('Payment successful!');
+      await fetch('/order/update-order-status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ order_id, status: 'paid' }),
+      });
+    }
+  });
+</script>
