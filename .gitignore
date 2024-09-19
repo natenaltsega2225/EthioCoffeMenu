@@ -36,7 +36,9 @@ yarn-error.log
 
 /Dozecafe Free Website Template - Free-CSS.com/
 
-/.gitignore
+
 /js
 
-/images
+/.public/images
+
+/ node_modules
