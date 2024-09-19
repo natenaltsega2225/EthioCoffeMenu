@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+#menu-button {
+    background-color: #ff9500;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#menu-button:hover {
+    background-color: #ff7700;
+}
+
+#menu-section {
+    margin-top: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 5px 0;
+}
+
+#coffee-list img, #food-list img {
+    width: 100%; /* Set image width to 100% of parent container */
+    height: auto; /* Set height to auto to scale with width */
+    aspect-ratio: 1/1; /* Maintain a 1:1 aspect ratio */
+    object-fit: cover; /* Ensure images are scaled and centered */
+    border-radius: 10px; /* Add a slight border radius for aesthetics */
+    max-height: 300px; /* Set a maximum height to prevent large images */
+  }
+  
+  /* Add media query for smaller screens */
+  @media (max-width: 768px) {
+    #coffee-list img, #food-list img {
+      max-height: 150px; /* Reduce maximum height on smaller screens */
+    }
+  }
