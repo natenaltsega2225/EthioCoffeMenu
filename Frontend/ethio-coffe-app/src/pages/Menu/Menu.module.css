@@ -1,0 +1,82 @@
+.coffee_section {
+    padding: 60px 0;
+    background-color: #f8f8f8; /* Light background for contrast */
+  }
+  
+  .coffee_taital {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333; /* Dark text color */
+  }
+  
+  .bulit_icon {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .bulit_icon img {
+    width: 50px; /* Adjust icon size */
+  }
+  
+  .coffee_section_2 {
+    position: relative;
+  }
+  
+  .carousel-item {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .coffee_img {
+    text-align: center;
+  }
+  
+  .coffee_img img {
+    width: 100%; /* Responsive images */
+    border-radius: 10px; /* Optional: for rounded corners */
+  }
+  
+  .types_text {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 15px 0 10px;
+    color: #444; /* Slightly lighter color for titles */
+  }
+  
+  .looking_text {
+    font-size: 1rem;
+    text-align: center;
+    color: #666; /* Lighter text color for descriptions */
+    margin-bottom: 20px;
+  }
+  
+  .read_bt {
+    text-align: center;
+  }
+  
+  .read_bt a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff7f50; /* Coral color for buttons */
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  
+  .read_bt a:hover {
+    background-color: #ff6347; /* Darker coral on hover */
+  }
+  
+  /* Carousel controls */
+  .carousel-control-prev,
+  .carousel-control-next {
+    color: #333; /* Control color */
+  }
+  
+  .carousel-control-prev:hover,
+  .carousel-control-next:hover {
+    color: #ff7f50; /* Change color on hover */
+  }
+  
